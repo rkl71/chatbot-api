@@ -1,5 +1,6 @@
 package com.hanyang.chatbot.api.test;
 
+import com.hanyang.chatbot.api.domain.ai.IOpenAI;
 import com.hanyang.chatbot.api.domain.planet.IPlanetApi;
 import com.alibaba.fastjson.JSON;
 import com.hanyang.chatbot.api.domain.planet.model.aggregates.UnAnsweredQuestionsAggregates;
@@ -30,6 +31,10 @@ public class SpringBootRunTest {
     @Resource
     private IPlanetApi planetApi;
 
+    @Resource
+    private IOpenAI openAI;
+
+
     @Test
     public void test_planetApi() throws IOException {
         UnAnsweredQuestionsAggregates unAnsweredQuestionsAggregates = planetApi.queryUnAnsweredQuestionsTopicId(groupId, cookie);
@@ -42,5 +47,12 @@ public class SpringBootRunTest {
             logger.info("topicId：{} text：{}", topicId, text);
         }
     }
+
+    @Test
+    public void test_openAi() throws IOException {
+        String response = openAI.doChatGPT("帮我写一个java冒泡排序");
+        logger.info("测试结果：{}", response);
+    }
+
 
 }
