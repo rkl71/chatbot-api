@@ -18,6 +18,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 问题任务
+ */
 @EnableScheduling
 @Configuration
 public class ChatbotSchedule {
