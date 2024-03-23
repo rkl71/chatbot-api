@@ -48,13 +48,13 @@ public class SpringBootRunTest {
             String text = topic.getQuestion().getText();
             logger.info("topicId：{} text：{}", topicId, text);
             // 回答问题
-            planetApi.answer(groupId, cookie, topicId, openAI.doChatGPT(openAiKey, text), false);
+            planetApi.answer(groupId, cookie, topicId, openAI.doChatGPT(text), false);
         }
     }
 
     @Test
     public void test_openAi() throws IOException {
-        String response = openAI.doChatGPT(openAiKey, "帮我写一个java冒泡排序");
+        String response = openAI.doChatGPT("帮我写一个java冒泡排序");
         logger.info("测试结果：{}", response);
     }
 
